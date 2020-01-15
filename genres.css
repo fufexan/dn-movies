@@ -1,0 +1,22 @@
+.genres ul {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	margin: 0;
+	align-content: stretch;
+	width: 100%;
+}
+
+.genres li {
+	flex-grow: 1;
+	flex-basis: 200px;
+	padding: 20px;
+	text-align: center;
+}
+
+.genres a {
+	color: #222;
+	background-color: transparent;
+	padding: 0;
+	font-size: 16pt;
+}

@@ -1,0 +1,149 @@
+/***** general *****/
+
+body {
+    font-family: sans-serif;
+    color: #222;
+    margin: 0;
+}
+
+li {
+    padding: 10px 0;
+}
+
+p {
+    margin: 0;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+a {
+    padding: 5px 10px;
+    border-radius: 10px;
+    text-decoration: none;
+    background-color: #222;
+    color: white;
+}
+
+button {
+    padding: 5px 10px;
+    border-radius: 10px;
+    text-decoration: none;
+    background-color: #222;
+    color: white;
+    border: none;
+    font-size: 1em;
+}
+
+/***** header *****/
+
+header {
+    padding: 10px;
+    box-shadow: 0 1px 3px grey;
+    overflow: auto;
+    position: fixed;
+    background-color: white;
+    width: 100%;
+}
+
+header a {
+    display: block;
+    text-align: center;
+    float: left;
+    margin: 5px;
+}
+
+header input[type=text] {
+    border: none;
+    border-radius: 10px 0 0 10px;
+    background-color: #bcbcbc;
+    padding: 5px;
+    padding-right: 0;
+    font-size: 1em;
+}
+
+header input[type=submit] {
+    padding: 5px 10px;
+    border-radius: 0 10px 10px 0;
+    text-decoration: none;
+    background-color: #222;
+    color: white;
+    border: none;
+    font-size: 1em;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    float: left;
+    padding-right: 10px;
+}
+
+/***** footer *****/
+footer {
+    padding: 10px;
+    bottom: 0;
+    text-align: center;
+}
+
+/***** non-categorized *****/
+
+.movies {
+    padding: 100px 10px 0 10px;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-container div {
+    width: 800px;
+}
+
+.flex-item {
+    margin: 0 10px;
+}
+
+.left {
+    width: 80%;
+}
+
+.row {
+    display: flex;
+}
+
+.right li {
+    padding-left: 10px;
+}
+
+@media screen and (max-width: 1000px) {
+  .flex-container {
+    flex-wrap: wrap;
+  }
+  .row {
+    flex-direction: column;
+  }
+  .right, .left {
+    width: 100%;
+  }
+}
+
+.poster {
+    height: 445px;
+    width: 300px;
+    align-self: center;
+}
+
+.plot {
+    font-style: italic;
+}
+
+.title {
+    font-family: serif;
+}
