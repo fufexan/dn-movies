@@ -34,7 +34,7 @@
         <a href="archive.php">Movies</a>
         <a href="genres.php">Genres</a>
         <form action="search-results.php">
-			<input type="text" name="q" placeholder="Search movies"><input type="submit" value="&#x1F50D;">
+			    <input type="text" name="s" placeholder="Search movies"><input type="submit" value="&#x1F50D;">
         </form>
     </header>
 

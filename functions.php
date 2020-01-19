@@ -32,11 +32,6 @@ function runtime_format ($runtime) {
 	return $hours . ':' . $minutes . ' h';
 }
 
-// returns true if the provided variable is the genre supplied (by _GET)
-//function is_in_genre ($var) {
-//	return ($var == $_COOKIE['genre']);
-//}
-
 // function to get a movie's actors as array
 function get_actors ($movie) {
 	return explode(', ' , $movie->actors);
