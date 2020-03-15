@@ -6,17 +6,13 @@
 
 	sort($genres);
 ?>
-<div class="genres" style="padding-top: 75px;">
-	<ul>
-		<?php 
-			foreach ($genres as $genre) {
-		?>
-		<li style="background-color: #c0da<?php echo rand(10, 99); ?>">
-			<a href="archive.php?genre=<?php echo $genre; ?>"><?php echo $genre; ?></a>
-		</li>
-		<?php
-			}
-		?>
-	</ul>
+<div class="flex-container" style="padding-top: 75px;">
+	<?php 
+		foreach ($genres as $genre) {
+	?>
+			<a href="archive.php?genre=<?php echo $genre; ?>" class="genres" style="background-color: #c0da<?php echo rand(10, 99); ?>" ><?php echo $genre; ?></a>
+	<?php
+		}
+	?>
 </div>
 <?php include_once('footer.php'); ?>

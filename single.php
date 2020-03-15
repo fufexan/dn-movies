@@ -4,7 +4,7 @@
 	$page_title = reset($_GET);
 
 	require_once('header.php');
-	include('footer.php');
+	require_once('archive-movie.php');
 
 	// search movies for matching title
 	foreach ($movies as $current_movie) {
@@ -31,7 +31,7 @@
 	
 	<!-- normal page -->
 
-	<li class="flex-container">
+	<div class="flex-container">
 		<!-- display the poster or a placeholder if the poster is unavailable -->
 		<img src="<?php echo $movie->posterUrl; ?>" onerror="this.src='https:\/\/upload.wikimedia.org/wikipedia/commons/c/c2/No_image_poster.png'" alt="" class="flex-item poster">
 
@@ -40,7 +40,18 @@
 			<h2 class="title">
 				<?php echo $movie->title; ?>
 			</h2>
+
+			<!-- rating display -->
+			<div class="rating-display">
+				<div class="rating-display-top" style="width: <?php //echo get_rating($id) * 20; ?>65%">
+					<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+				</div>
+				<div class="rating-display-bottom">
+					<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+				</div>
+			</div>
 			
+			<!-- year -->
 			<p>
 				<?php if ($movie->year >= 2010) {
 						echo "<b>$movie->year</b>";
@@ -94,8 +105,11 @@
 			<?php if ($movie->director != 'N/A') { ?>
 				<p>Director: <?php echo $movie->director; ?></p>
 			<?php } ?>
+
+			<!-- rating system -->
+			
 		</div>
-	</li>
+	</div>
 	<?php } ?>
 </div>
 <?php include_once('footer.php');

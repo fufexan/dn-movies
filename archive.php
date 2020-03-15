@@ -2,6 +2,7 @@
   $page_title = 'Archive';
   $all_actors = array();
   require_once('header.php');
+  require('archive-movie.php');
 
 /*
 37. În fișierul genres.php, la click pe fiecare gen de film, link-ul ar trebui să ducă spre fișierul archive.php (același unde listăm TOATE filmele) care să aibă parametrul $_GET cu numele genului de film. Iar pe pagina de arhivă să se afișeze doar filmele din acest gen. Pentru asta folosiți funcția array_filter() (citiți ce face aceasta și încercați să o folosiți corect).
@@ -40,7 +41,7 @@ if (isset($_GET['genre'])) {
           }
         } else {
         foreach ($movies as $movie) {
-          movie_pres($movie, 1);
+          movie_pres($movie);
           $all_actors = append_actors (get_actors ($movie), $all_actors);
         }} ?>
     </ul>
