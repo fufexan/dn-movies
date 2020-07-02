@@ -2,7 +2,6 @@
 	$page_title = 'Search results';
 	$additional_css = '';
 	include('header.php');
-	include('archive-movie.php');
 	
 	// get every text that has a given string inside
 	function search_term ($movie) {
@@ -33,7 +32,7 @@
 				<h1 class="title" style="padding-left: 30px;">Search results for "<?php echo $page_title; ?>"</h1>
 				<?php 
 				foreach ($movie_list as $movie)
-					movie_pres($movie, false);
+					movie_pres($movie, $max_runtime, false);
 				break;
 
 			case 'empty': ?>

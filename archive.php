@@ -14,12 +14,12 @@ function is_in_genre ($var) {
 	return ($var == $_GET['genre']);
 }
 
-if (isset($_GET['genre'])) {
+if( isset( $_GET[ 'genre' ] ) ) {
   $i = -1;
-  $movie_list = array();
-  foreach ($movies as $movie) {
-    if(array_filter($movie->genres, 'is_in_genre'))
-      $movie_list[++$i] = $movie->id;
+  $movie_list = [];
+  foreach( $movies as $movie ) {
+    if( array_filter( $movie->genres, 'is_in_genre' ) )
+      $movie_list[ ++$i ] = $movie->id;
   }
   $page_title = $_GET['genre'] . ' Movies';
   ?>
@@ -31,18 +31,18 @@ if (isset($_GET['genre'])) {
     <!-- movies list -->
     <ul class="left">
       <?php
-        if (isset($movie_list)) { ?>
+        if( isset( $movie_list ) ) { ?>
           <h1 class="title" style="padding-left: 30px;"><?php echo $page_title; ?></h1>
       <?php    
-          foreach ($movie_list as $id) {
-            $movie = $movies[$id];
-            movie_pres($movie, true);
-            $all_actors = append_actors (get_actors ($movie), $all_actors);
+          foreach( $movie_list as $id ) {
+            $movie = $movies[ $id ];
+            movie_pres( $movie, true );
+            $all_actors = append_actors( get_actors($movie), $all_actors );
           }
         } else {
-        foreach ($movies as $movie) {
-          movie_pres($movie);
-          $all_actors = append_actors (get_actors ($movie), $all_actors);
+        foreach( $movies as $movie ) {
+          movie_pres( $movie );
+          $all_actors = append_actors( get_actors($movie), $all_actors );
         }} ?>
     </ul>
     
@@ -52,7 +52,7 @@ if (isset($_GET['genre'])) {
       <?php
         $all_actors = sort_actors($all_actors);
         //echo '<pre>' . print_r($all_actors) . '</pre>';
-        foreach ($all_actors as $current_actor)
+        foreach( $all_actors as $current_actor )
           echo "<li>$current_actor</li>";
       ?>
       </ul>
