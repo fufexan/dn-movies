@@ -14,7 +14,7 @@ function cut_plot($plot) {
 
 	// in some cases the last character of the truncated text is a space
 	// looks bad so we cut it
-	$plot = str_replace( " ...", "...", $plot );
+	$plot = str_replace (" ...", "...", $plot);
 
 	return $plot;
 }
@@ -32,32 +32,38 @@ function format_runtime($runtime) {
 
 // get a movie's actors as array
 function get_actors($movie) {
-	return explode( ', ' , $movie->actors );
+	return explode (', ' , $movie->actors);
 }
 
 // append a movie's actors to all actors list
-function append_actors( $actors_list, $all_actors ) {
-	foreach( $actors_list as $current_actor )
-		$all_actors[ sizeof($all_actors) ] = $current_actor;
+function append_actors ($actors_list, $all_actors) {
+	foreach ($actors_list as $current_actor)
+		$all_actors[sizeof($all_actors)] = $current_actor;
 	return $all_actors;
 }
 
 // gets the runtime of the longest film
 function get_longest_movie($movies) {
-	if( isset( $_COOKIE[ 'longest-movie-length' ] ) ) {
-		$max_runtime = $_COOKIE[ 'longest-movie-length' ];
+	if (isset($_COOKIE['longest-movie-length'])) {
+		$max_runtime = $_COOKIE['longest-movie-length'];
 	} else {
-		$max_runtime = max( array_column( $movies, 'runtime' ) );
-		setcookie( 'longest-movie-length', $max_runtime );
+		$max_runtime = max(array_column($movies, 'runtime'));
+		setcookie('longest-movie-length', $max_runtime);
 	}
 	return $max_runtime;
 }
 
 function sort_years($a, $b) {
-	if( $a->year == $b->year )
+	if ($a->year == $b->year)
 		return 0;
-	else if( $a->year > $b->year )
+	elseif ($a->year > $b->year)
 		return 1;
 	else
 		return -1;
+}
+
+function get_nr_items($type) {
+	$base_db = 'https://raw.githubusercontent.com/yegor-sytnyk/movies-list'
+		. '/master/db.json';
+	return count(json_decode(file_get_contents($base_db))->$type);
 }

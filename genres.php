@@ -6,9 +6,9 @@
 
 	sort($genres);
 ?>
-<div class="c-flex" style="padding-top: 75px;">
-	<?php foreach( $genres as $genre ) { ?>
-		<a href="archive.php?genre=<?php echo $genre; ?>" class="genres" style="background-color: <?php //echo $rand_color('c1ba'); ?>#eea9<?php echo rand(10, 99); ?>" ><?php echo $genre; ?></a>
+<div class="c-flex" style="padding-top: 70px;">
+	<?php foreach ($genres as $genre) { ?>
+		<a href="archive.php?genre=<?= $genre; ?>" class="genres" style="background-color: <?php //echo $rand_color('c1ba'); ?>#eea9<?= rand(10, 99); ?>" ><?= $genre; ?></a>
 	<?php } ?>
 </div>
 

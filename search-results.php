@@ -1,6 +1,6 @@
 <?php
+
 	$page_title = 'Search results';
-	$additional_css = '';
 	include('header.php');
 	
 	// get every text that has a given string inside
@@ -23,31 +23,43 @@
 	}
 ?>
 
-<div class="row" style="padding: 75px 0;">
-    <!-- movies list -->
-    <ul class="left">
+<article class="row">
+		<!-- movies list -->
+		<ul class="left">
 		<?php 
+
 			switch ($error) {
-			case null: ?>
-				<h1 class="title" style="padding-left: 30px;">Search results for "<?php echo $page_title; ?>"</h1>
-				<?php 
+			case null:
+
+			?>
+				<h1 class="title" style="padding-left: 30px;">Search results for "<?= $page_title; ?>"</h1>
+			<?php
+
 				foreach ($movie_list as $movie)
 					movie_pres($movie, $max_runtime, false);
 				break;
 
-			case 'empty': ?>
-				<h1 style="text-align: center;">Sorry, no results found for "<?php echo $page_title; ?>"</h1>
-				<?php
+			case 'empty':
+
+			?>
+				<h1 style="text-align: center;">Sorry, no results found for "<?= $page_title; ?>"</h1>
+			<?php
 				break;
 
-			case 'chars': ?>
+			case 'chars':
+			
+			?>
 				<h1 style="text-align: center;">Try searching for a term with at least 3 characters.</h2>
-				<?php
+			<?php
+
 				break;
 
-			case 404: ?>
+			case 404:
+
+			?>
 				<h1 style="text-align: center;">Please enter a search term.</h1>
 		<?php } ?>
 	</ul>
-</div>
+</article>
+
 <?php include('footer.php');

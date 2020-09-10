@@ -47,6 +47,7 @@ header {
   padding: 10px;
   overflow: auto;
   position: fixed;
+  top: 0;
   background-color: #f6e0b5;
   width: 100%;
 }
@@ -85,6 +86,7 @@ header input[type="submit"] {
   color: white;
   border: 1px inset #222;
   font-size: 1em;
+  cursor: pointer;
 }
 
 .logo {
@@ -151,10 +153,19 @@ footer {
 
 .c-flex {
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
   justify-content: start;
   align-items: center;
+}
+
+@media screen and (max-width: 1200px) {
+  .c-flex li {
+    flex-direction: column;
+    text-align: center;
+    flex-wrap: wrap;
+  }
+  .meter {
+    margin: auto;
+  }
 }
 
 .c-flex div {
@@ -162,15 +173,11 @@ footer {
 }
 
 .i-flex {
-  margin: 0 10px;
+  margin: 0 1em;
 }
 
 .left {
   width: 80%;
-}
-
-.row {
-  display: flex;
 }
 
 .right {
@@ -181,15 +188,13 @@ footer {
   padding-left: 10px;
 }
 
+.row {
+  display: flex;
+}
+
 @media screen and (max-width: 768px) {
-  .flex-container {
+  .c-flex {
     flex-wrap: wrap;
-    text-align: center;
-  }
-  .flex-container div {
-    width: auto;
-  }
-  .row {
     flex-direction: column;
   }
   .right,
@@ -201,10 +206,16 @@ footer {
 .poster {
   height: 445px;
   width: 300px;
+  min-width: 300px;
 }
 
 .plot {
   font-style: italic;
+}
+
+h1 {
+  padding: 1em;
+  margin: 0;
 }
 
 .title {
@@ -228,6 +239,7 @@ footer {
   position: relative;
   background: #66545e;
   border-radius: 15px;
+  z-index: -1;
 }
 
 .meter > span {
@@ -241,7 +253,7 @@ footer {
 }
 
 /*
- *	Star Rating System
+ *  Star Rating System
  */
 
 div.stars {

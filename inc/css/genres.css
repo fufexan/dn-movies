@@ -1,23 +1,23 @@
 .c-flex {
-	flex-wrap: wrap;
-	justify-content: start;
+  flex-wrap: wrap;
+  justify-content: start;
 }
 
 .genres {
-	display: flex;
-	width: 25%;
-	height: 25vh;
-	flex-wrap: wrap;
-	border-radius: 0;
-	align-items: center;
-	justify-content: center;
-	background-color: transparent;
-	padding: 0;
-	font-size: 16pt;
+  display: flex;
+  width: 25%;
+  height: 25vh;
+  flex-wrap: wrap;
+  border-radius: 0;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  padding: 0;
+  font-size: 16pt;
 }
 
 @media only screen and (max-width: 768px) {
-	.genres {
-		width: 50%;
-	}
+  .genres {
+    width: 50%;
+  }
 }

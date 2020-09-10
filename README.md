@@ -9,5 +9,5 @@ them. It also features a search form to make it easier to find movies.
 
 - Have a web server set up with PHP (I used XAMPP). Make sure to also have a MySQL database (needed to
   store user ratings).
-- Clone this repo and place it in your public server folder.
+- Clone this repo and place it in your server's public folder.
 - Access it from a web browser.
