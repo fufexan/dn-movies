@@ -33,7 +33,7 @@
 	?>
 </head>
 <body>
-	<header style="/* display: none */">
+	<header style="/**/ display: none /**/">
 		<img src="inc/img/logo.svg" alt="Movies" class="logo">
 
 		<a href="index.php">Home</a>
