@@ -36,7 +36,7 @@ function get_actors($movie) {
 }
 
 // append a movie's actors to all actors list
-function append_actors($actors_list, $all_actors) {
+function append_actors ($actors_list, $all_actors) {
 	foreach ($actors_list as $current_actor)
 		$all_actors[sizeof($all_actors)] = $current_actor;
 	return $all_actors;
@@ -53,7 +53,6 @@ function get_longest_movie($movies) {
 	return $max_runtime;
 }
 
-// compares two years
 function sort_years($a, $b) {
 	if ($a->year == $b->year)
 		return 0;
@@ -63,80 +62,76 @@ function sort_years($a, $b) {
 		return -1;
 }
 
-// counts the number of items of a specific type
 function get_nr_items($type) {
 	$base_db = 'https://raw.githubusercontent.com/yegor-sytnyk/movies-list'
 		. '/master/db.json';
 	return count(json_decode(file_get_contents($base_db))->$type);
 }
+<<<<<<< HEAD
 
 //
-// MySQL functions
+// DB functions
 //
 
-// returns a mysqli connection with defaults
-function db_connect(
-	$host = 'localhost',
-	$user = 'php_user',
-	$pass = '',
-	$database = 'movies_ratings') {
+// check if the db file is present and valid, or create it if nonexistent
+function check_db() {
+	$db = 'db.json';
 
-	return mysqli_connect($host, $user, $pass, $database);
-}
-
-// check if a table is present and create it if nonexistent
-function check_table($id) {
-	$db = db_connect();
-	$query = "
-			SELECT * 
-			FROM information_schema.tables
-			WHERE table_schema = 'movies_ratings'
-			    AND table_name = '$id'
-			LIMIT 1;
-	";
-
-	if (mysqli_query($db, $query)->num_rows == 0) {
-		$query = "CREATE TABLE `movies_ratings`.`$id`
-				(`#`     INT  NOT NULL AUTO_INCREMENT,
-				`rating` INT  NOT NULL,
-				`date`   DATE NOT NULL,
-				PRIMARY KEY (`#`));
-		";
-
-		mysqli_query($db, $query);
-	}
-
-	mysqli_close($db);
+	// if file does not exist or is not in json format, recreate it
+	if (!file_exists($db) || json_decode(file_get_contents($db)) === NULL) {
+		file_put_contents($db, '[]');
+	} 
 }
 
 // set new rating for a movie
 function set_rating($id, $rating) {
-	$db = db_connect();
+	check_db();
+
 	$date = date('Y-m-d');
-	$query = "INSERT INTO `movies_ratings`.`$id` (`rating`, `date`)
-			VALUES ($rating, DATE '$date');
-	";
 
-	check_table($id);
-	mysqli_query($db, $query);
+	// new entry
+	$entry = [
+		'id' => $id,
+		'rating' => $rating,
+		'date' => $date
+	];
 
-	mysqli_close($db);
+	// extract db from file
+	$db = json_decode(file_get_contents('db.json'));
+
+	// add entry to db
+	$db[] = $entry;
+
+	// encode db and write to file
+	file_put_contents('db.json', json_encode($db));
 }
 
 // return the average rating of a movie
 function get_rating($id) {
-	$db = db_connect();
-	$query = "SELECT AVG(`rating`) AS `average` from `movies_ratings`.`$id`;";
+	check_db();
 
-	// get result and close db
-	$result = mysqli_query($db, $query);
-	mysqli_close($db);
+	// extract db from file
+	$db = json_decode(file_get_contents('db.json'));
 
-	// refine result
-	if ($result) {
-		$result = mysqli_fetch_assoc($result);
-		$result = intval($result['average']);
+	// get only elements that have the needed id
+	$result = array_filter($db, function ($data) use ($id) {
+		return $data->id == $id ? true : false;
+	});
+
+	// sum of all ratings
+	$rating = 0;
+	foreach ($result as $crt_rating) {
+		$rating += $crt_rating->rating;
 	}
+
+	// prevent division with 0
+	$count = count($result);
+	if (!$count) $count = 1;
+
+	// get average rating
+	$result = $rating / $count;
 
 	return $result;
 }
+=======
+>>>>>>> parent of ebec709... added MySQL DB support

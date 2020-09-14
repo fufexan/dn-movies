@@ -16,6 +16,7 @@
 		$movie_title = "Page Not Found";
 		include '404.php';
 	}
+<<<<<<< HEAD
 	
 	// update rating if user has submitted a rating
 	if (isset($_POST['star'])) {
@@ -24,7 +25,11 @@
 	}
 
 	$rating = get_rating($movie->id);
+	echo $rating;
+	
+=======
 
+>>>>>>> parent of ebec709... added MySQL DB support
 ?>
 
 <article>
@@ -40,8 +45,7 @@
 	
 	<div class="c-flex">
 		<?php // display the poster or a placeholder if the poster is unavailable ?>
-		<img src="<?= $movie->posterUrl; ?>" onerror="img_err(this)" alt=""
-			class="i-flex poster">
+		<img src="<?= $movie->posterUrl; ?>" onerror="img_err(this)" alt="" class="i-flex poster">
 
 		<?php // info about current movie ?>
 		<div class="i-flex">
@@ -51,19 +55,11 @@
 
 			<?php // rating display ?>
 			<div class="rating-display">
-				<div class="rating-display-top"
-					style="width: <?= $rating * 20; ?>%;">
-				<?php
-					for($i = 0; $i < 5; $i++)
-						echo '<span>★</span>';
-				?>
+				<div class="rating-display-top" style="width: <?php //echo get_rating($id) * 20; ?>65%">
+					<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
 				</div>
-
 				<div class="rating-display-bottom">
-				<?php
-					for($i = 0; $i < 5; $i++)
-						echo '<span>★</span>';
-				?>
+					<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
 				</div>
 			</div>
 			<?php // year ?>
@@ -119,18 +115,18 @@
 			<?php } ?>
 
 			<?php // rating system ?>
-			<div id="rating-system" class="stars">
+			<div class="stars">
 				<form action="">
-					<input class="star star-5" id="s5" type="radio" name="star" value="5"/>
-					<label class="star star-5" for="s5"></label>
-					<input class="star star-4" id="s4" type="radio" name="star" value="4"/>
-					<label class="star star-4" for="s4"></label>
-					<input class="star star-3" id="s3" type="radio" name="star" value="3"/>
-					<label class="star star-3" for="s3"></label>
-					<input class="star star-2" id="s2" type="radio" name="star" value="2"/>
-					<label class="star star-2" for="s2"></label>
-					<input class="star star-1" id="s1" type="radio" name="star" value="1"/>
-					<label class="star star-1" for="s1"></label>
+					<input class="star star-5" id="star-5" type="radio" name="star"/>
+					<label class="star star-5" for="star-5"></label>
+					<input class="star star-4" id="star-4" type="radio" name="star"/>
+					<label class="star star-4" for="star-4"></label>
+					<input class="star star-3" id="star-3" type="radio" name="star"/>
+					<label class="star star-3" for="star-3"></label>
+					<input class="star star-2" id="star-2" type="radio" name="star"/>
+					<label class="star star-2" for="star-2"></label>
+					<input class="star star-1" id="star-1" type="radio" name="star"/>
+					<label class="star star-1" for="star-1"></label>
 					<button class="send-rating" type="submit" formmethod="POST">Okay!</button>
 				</form>
 			</div>
