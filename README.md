@@ -20,3 +20,6 @@ You will need a few things before starting
    privileges: `SELECT`, `INSERT` and `CREATE`.
 3. Clone this repo and place it in your server's public folder.
 4. Access it from a web browser.
+
+**NOTE**: If you don't want the hassle of a MySQL server, you can use a json
+file as database. Check the json_db branch.
